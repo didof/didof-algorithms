@@ -25,7 +25,7 @@ import Vue from 'vue'
 import { isNumberOrAlphabet } from '~/utils/isInRanges'
 
 export default Vue.extend({
-  name: 'letter-box',
+  name: 'letter-cell',
   emits: ['right-click', 'replace-letter'],
   props: {
     letter: {

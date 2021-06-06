@@ -19,7 +19,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'plus-box',
+  name: 'plus-cell',
   emits: ['push-letter'],
   data() {
     return {

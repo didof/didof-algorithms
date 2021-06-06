@@ -1,7 +1,11 @@
 <template>
   <div>
+    <h4 class="is-size-4 has-text-grey-dark">String</h4>
     <DemoString :value="string" :statuses="stringStatuses" />
+    <br />
+    <h4 class="is-size-4 has-text-grey-dark">Pattern</h4>
     <DemoPattern :value="pattern" :statuses="patternStatuses" />
+    <br />
     <DemoCockpit
       @reset="handleReset"
       @prev="handlePrev"
@@ -11,6 +15,13 @@
       :disable-prev="!canStepLess()"
       :disable-next="!canStepMore()"
     />
+    <br />
+    <DemoTable
+      :labels="['iteration count', 'i', 'j', 'status']"
+      :values="records"
+      :highlighted="step - 1"
+      @select-row="handleSelectRow"
+    />
   </div>
 </template>
 
@@ -19,6 +30,7 @@ import Vue from 'vue'
 import DemoString from './DemoString.vue'
 import DemoPattern from './DemoPattern.vue'
 import DemoCockpit from './DemoCockpit.vue'
+import DemoTable from './DemoTable.vue'
 
 import naivePatternSearchingAlgorithm from '~/app/naive'
 
@@ -36,12 +48,16 @@ export default Vue.extend({
     DemoString,
     DemoPattern,
     DemoCockpit,
+    DemoTable,
   },
   data() {
     return {
       stringRecords: [new Array(length).fill(0)],
       patternRecords: [new Array(length).fill(0)],
+      records: [],
       step: 0,
+      currentI: 0,
+      currentJ: 0,
       animationInterval: null,
       disableNext: false,
     }
@@ -62,7 +78,9 @@ export default Vue.extend({
       this.pattern
     )
 
+    let iterations = 0
     reports.forEach(({ i, j, status }) => {
+      iterations++
       const s = new Array(this.string.length).fill(0)
       const p = new Array(this.pattern.length).fill(0)
 
@@ -71,6 +89,7 @@ export default Vue.extend({
 
       this.stringRecords.push(s)
       this.patternRecords.push(p)
+      this.records.push([iterations, i, j, status])
     })
   },
   computed: {
@@ -108,6 +127,9 @@ export default Vue.extend({
     },
     handleStop() {
       clearInterval(this.animationInterval)
+    },
+    handleSelectRow(index) {
+      this.step = index
     },
   },
 })

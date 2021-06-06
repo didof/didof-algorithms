@@ -1,16 +1,21 @@
 <template>
   <div>
-    <base-input
+    <h4 class="is-size-4 has-text-grey-dark">String</h4>
+    <InputLetters
       :value="string"
       :minLength="stringMinLength"
       @update-value="handleUpdateString"
-    ></base-input>
+    />
+
     <br />
-    <base-input
+
+    <h4 class="is-size-4 has-text-grey-dark">Pattern</h4>
+    <InputLetters
       :value="pattern"
       :maxLength="patternMaxLength"
+      :minLength="2"
       @update-value="handleUpdatePattern"
-    ></base-input>
+    />
     <br />
     <button
       @click="handleLock"
@@ -23,9 +28,13 @@
 
 <script>
 import Vue from 'vue'
+import InputLetters from './InputLetters.vue'
 
 export default Vue.extend({
   name: 'input-selection',
+  components: {
+    InputLetters,
+  },
   emits: ['lock'],
   props: {
     string: {

@@ -52,12 +52,6 @@ export default Vue.extend({
       this.empty.push(null)
     },
   },
-  methods: {
-    status(index) {
-      const { s } = this.statuses.find((el) => el.i === index) || 0
-      return s
-    },
-  },
 })
 </script>
 

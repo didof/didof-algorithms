@@ -7,7 +7,7 @@
       reset
     </button>
     <button
-      @click="$emit('prev')"
+      @click="onPrev"
       class="button is-rounded is-success is-outlined is-large is-uppercase"
       :disabled="disablePrev"
       :class="disablePrev ? 'is-disabled' : ''"
@@ -21,7 +21,7 @@
       {{ playButtonAction }}
     </button>
     <button
-      @click="$emit('next')"
+      @click="onNext"
       class="button is-rounded is-success is-outlined is-large is-uppercase"
       :disabled="disableNext"
       :class="disableNext ? 'is-disabled' : ''"
@@ -61,6 +61,14 @@ export default Vue.extend({
     togglePlay() {
       this.$emit(this.isPlaying ? 'stop' : 'play')
       this.isPlaying = !this.isPlaying
+    },
+    onPrev() {
+      this.$emit('stop')
+      this.$emit('prev')
+    },
+    onNext() {
+      this.$emit('stop')
+      this.$emit('next')
     },
   },
 })

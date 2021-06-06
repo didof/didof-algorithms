@@ -2,15 +2,15 @@
   <div>
     <ul class="columns">
       <li v-for="(letter, index) in letters" :key="index" class="column is-1">
-        <letter-box
+        <LetterCell
           :index="index"
           :letter="letter"
           @right-click="spliceLetter"
           @replace-letter="replaceLetter"
-        ></letter-box>
+        />
       </li>
       <li class="column is-1" v-if="canPushMoreLetters">
-        <plus-box @push-letter="pushLetter"></plus-box>
+        <PlusCell @push-letter="pushLetter" />
       </li>
     </ul>
   </div>
@@ -18,9 +18,15 @@
 
 <script>
 import Vue from 'vue'
+import LetterCell from './LetterCell.vue'
+import PlusCell from './PlusCell.vue'
 
 export default Vue.extend({
-  name: 'base-input',
+  name: 'base-letters',
+  components: {
+    LetterCell,
+    PlusCell,
+  },
   emits: ['update-value'],
   props: {
     value: {

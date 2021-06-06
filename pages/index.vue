@@ -10,7 +10,7 @@
 
 <script>
 import Vue from 'vue'
-import InputSelection from '~/components/InputSelection'
+import InputSelection from '~/components/inputSelection/InputSelection'
 import Demo from '~/components/demo/Demo'
 
 export default Vue.extend({
