@@ -12,7 +12,12 @@
       @update-value="handleUpdatePattern"
     ></base-input>
     <br />
-    <button @click="handleLock">Lock</button>
+    <button
+      @click="handleLock"
+      class="button is-large is-rounded is-outlined is-info"
+    >
+      Lock
+    </button>
   </div>
 </template>
 
@@ -20,7 +25,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'input-tuple',
+  name: 'input-selection',
   emits: ['lock'],
   props: {
     string: {
@@ -29,7 +34,7 @@ export default Vue.extend({
     },
     pattern: {
       type: String,
-      default: 'ab',
+      default: 'aba',
     },
   },
   data() {

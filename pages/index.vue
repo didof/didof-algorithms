@@ -1,53 +1,37 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
-
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-    </div>
-  </section>
+  <div>
+    <h1 class="is-size-1 has-text-grey-darker">Naive Pattern Searching</h1>
+    <h2 class="is-size-2 has-text-grey">Visualized</h2>
+    <hr />
+    <InputSelection v-if="!isLocked" @lock="handleLock" />
+    <Demo v-else :string="string" :pattern="pattern" />
+  </div>
 </template>
 
 <script>
-import Card from '~/components/Card'
+import Vue from 'vue'
+import InputSelection from '~/components/InputSelection'
+import Demo from '~/components/demo/Demo'
 
-export default {
-  name: 'HomePage',
-
+export default Vue.extend({
+  name: 'page-naive',
   components: {
-    Card
-  }
-}
+    InputSelection,
+    Demo,
+  },
+  data() {
+    return {
+      isLocked: false,
+      string: null,
+      pattern: null,
+    }
+  },
+  methods: {
+    handleLock([string, pattern]) {
+      this.isLocked = true
+      this.string = string
+      this.pattern = pattern
+    },
+  },
+})
 </script>

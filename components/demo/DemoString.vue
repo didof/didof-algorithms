@@ -5,7 +5,7 @@
         <demo-cell
           :index="index"
           :letter="letter"
-          :status="status(index)"
+          :status="statuses[index]"
         ></demo-cell>
       </li>
     </ul>
@@ -14,7 +14,7 @@
 
 <script>
 import Vue from 'vue'
-import DemoCell from '~/components/DemoCell.vue'
+import DemoCell from './DemoCell.vue'
 
 export default Vue.extend({
   name: 'demo-string',
@@ -35,12 +35,6 @@ export default Vue.extend({
     return {
       letters: this.$props.value.split(''),
     }
-  },
-  methods: {
-    status(index) {
-      const { s } = this.statuses.find((el) => el.i === index) || 0
-      return s
-    },
   },
 })
 </script>

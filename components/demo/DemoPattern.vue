@@ -11,7 +11,7 @@
       <demo-cell
         :index="index"
         :letter="letter"
-        :status="status(index)"
+        :status="statuses[index]"
       ></demo-cell>
     </li>
   </ul>
@@ -19,7 +19,7 @@
 
 <script>
 import Vue from 'vue'
-import DemoCell from '~/components/DemoCell.vue'
+import DemoCell from './DemoCell.vue'
 
 export default Vue.extend({
   name: 'demo-pattern',
