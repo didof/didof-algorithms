@@ -7,6 +7,7 @@
     <DemoPattern :value="pattern" :statuses="patternStatuses" />
     <br />
     <DemoCockpit
+      @new="$emit('new')"
       @reset="handleReset"
       @prev="handlePrev"
       @next="handleNext"
@@ -50,6 +51,7 @@ export default Vue.extend({
     DemoCockpit,
     DemoTable,
   },
+  emits: ['new'],
   data() {
     return {
       stringRecords: [new Array(length).fill(0)],
@@ -123,7 +125,7 @@ export default Vue.extend({
         if (this.canStepMore()) {
           this.step++
         } else handleStop()
-      }, 1000)
+      }, 500)
     },
     handleStop() {
       clearInterval(this.animationInterval)

@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <tr
-        v-for="(row, index) in values"
+        v-for="(row, index) in formattedValues"
         :key="'row' + index"
         :class="getRowColor(index)"
         @click="$emit('select-row', index + 1)"
@@ -52,10 +52,11 @@ export default Vue.extend({
   data() {
     return {
       statusesSequence: [],
+      formattedValues: [],
     }
   },
   created() {
-    this.values = this.values.map((row) => {
+    this.formattedValues = this.$props.values.map((row) => {
       this.statusesSequence.push(row[3])
       switch (row[3]) {
         case 1:

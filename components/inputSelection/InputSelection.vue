@@ -39,11 +39,11 @@ export default Vue.extend({
   props: {
     string: {
       type: String,
-      default: 'abdabcababda',
+      required: true,
     },
     pattern: {
       type: String,
-      default: 'aba',
+      required: true,
     },
   },
   data() {

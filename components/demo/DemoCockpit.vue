@@ -1,8 +1,14 @@
 <template>
   <div class="buttons has-addons">
     <button
-      @click="$emit('reset')"
+      @click="$emit('new')"
       class="button is-danger is-outlined is-large is-uppercase"
+    >
+      new
+    </button>
+    <button
+      @click="$emit('reset')"
+      class="button is-warning is-outlined is-large is-uppercase"
     >
       reset
     </button>
@@ -36,7 +42,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'demo-cockpit',
-  emits: ['reset', 'prev', 'next', 'play', 'stop'],
+  emits: ['new', 'reset', 'prev', 'next', 'play', 'stop'],
   data() {
     return {
       isPlaying: false,
