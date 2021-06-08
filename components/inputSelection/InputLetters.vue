@@ -1,19 +1,15 @@
 <template>
-  <div>
-    <ul class="columns">
-      <li v-for="(letter, index) in letters" :key="index" class="column is-1">
-        <LetterCell
-          :index="index"
-          :letter="letter"
-          @right-click="spliceLetter"
-          @replace-letter="replaceLetter"
-        />
-      </li>
-      <li class="column is-1" v-if="canPushMoreLetters">
-        <PlusCell @push-letter="pushLetter" />
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <LetterCell
+      v-for="(letter, index) in letters"
+      :key="index"
+      :index="index"
+      :letter="letter"
+      @right-click="spliceLetter"
+      @replace-letter="replaceLetter"
+    />
+    <PlusCell @push-letter="pushLetter" v-if="canPushMoreLetters" />
+  </ul>
 </template>
 
 <script>
@@ -39,7 +35,7 @@ export default Vue.extend({
     },
     maxLength: {
       type: Number,
-      default: 12,
+      default: 13,
     },
   },
   data() {

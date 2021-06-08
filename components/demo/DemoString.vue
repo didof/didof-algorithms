@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <ul class="columns">
-      <li v-for="(letter, index) in letters" :key="index" class="column is-1">
-        <demo-cell
-          :index="index"
-          :letter="letter"
-          :status="statuses[index]"
-        ></demo-cell>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <demo-cell
+      v-for="(letter, index) in letters"
+      :key="index"
+      :index="index"
+      :letter="letter"
+      :status="statuses[index]"
+    ></demo-cell>
+  </ul>
 </template>
 
 <script>

@@ -17,12 +17,15 @@
       @update-value="handleUpdatePattern"
     />
     <br />
-    <button
-      @click="handleLock"
-      class="button is-large is-rounded is-outlined is-info"
-    >
-      Lock
-    </button>
+    <div class="is-flex is-justify-content-center">
+      <button
+        @click="handleLock"
+        class="button is-large is-rounded is-outlined is-info"
+        id="visualize-button"
+      >
+        Visualize
+      </button>
+    </div>
   </div>
 </template>
 

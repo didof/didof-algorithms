@@ -1,8 +1,8 @@
 <template>
-  <div
+  <li
     class="
       tag
-      is-size-1
+      is-size-3
       has-text-centered
       is-uppercase
       has-text-weight-bold
@@ -12,7 +12,7 @@
   >
     <span v-if="!digitable"> + </span>
     <span v-else>_</span>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-div {
+li {
   cursor: pointer;
 }
 </style>

@@ -1,19 +1,12 @@
 <template>
-  <ul class="columns">
-    <li v-for="(_, index) in empty" :key="index">
-      <div class="column is-1 empty"></div>
-    </li>
-    <li
+  <ul>
+    <demo-cell
       v-for="(letter, index) in letters"
       :key="index + letter"
-      class="column is-1"
-    >
-      <demo-cell
-        :index="index"
-        :letter="letter"
-        :status="statuses[index]"
-      ></demo-cell>
-    </li>
+      :index="index"
+      :letter="letter"
+      :status="statuses[index]"
+    ></demo-cell>
   </ul>
 </template>
 
@@ -35,22 +28,11 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
-    offset: {
-      type: Number,
-      default: 0,
-    },
   },
   data() {
     return {
       letters: this.$props.value.split(''),
-      empty: new Array(this.offset),
     }
-  },
-  watch: {
-    offset(value, prevValue) {
-      if (value == prevValue) return
-      this.empty.push(null)
-    },
   },
 })
 </script>

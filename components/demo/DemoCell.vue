@@ -1,8 +1,8 @@
 <template>
-  <div
+  <li
     class="
       tag
-      is-size-1
+      is-size-3
       has-text-centered
       is-uppercase
       has-text-weight-bold
@@ -11,11 +11,11 @@
     :class="statusColor"
   >
     <span
-      class="is-size-3 has-text-centered is-uppercase has-text-weight-medium"
+      class="is-size-5 has-text-centered is-uppercase has-text-weight-medium"
       >{{ index }}</span
     >
     <b>{{ letter }}</b>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -66,10 +66,10 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-div {
+li {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  margin-right: 10px;
 }
 
 span {
