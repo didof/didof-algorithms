@@ -23,6 +23,8 @@
     <button
       @click="togglePlay"
       class="button is-rounded is-success is-outlined is-large is-uppercase"
+      :disabled="disableNext"
+      :class="disableNext ? 'is-disabled' : ''"
     >
       {{ playButtonAction }}
     </button>
@@ -56,6 +58,14 @@ export default Vue.extend({
     disableNext: {
       type: Boolean,
       required: true,
+    },
+  },
+  watch: {
+    disableNext(val) {
+      if (val) {
+        this.isPlaying = false
+        this.$emit('stop')
+      }
     },
   },
   computed: {

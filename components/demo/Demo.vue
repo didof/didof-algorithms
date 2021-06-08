@@ -17,12 +17,24 @@
       :disable-next="!canStepMore()"
     />
     <br />
-    <DemoTable
-      :labels="['iteration count', 'i', 'j', 'status']"
-      :values="records"
-      :highlighted="step - 1"
-      @select-row="handleSelectRow"
-    />
+    <div class="columns">
+      <div class="column is-6">
+        <DemoTable
+          :labels="['iteration count', 'i', 'j', 'status']"
+          :values="records"
+          :highlighted="step - 1"
+          @select-row="handleSelectRow"
+        />
+      </div>
+      <div class="column is-6">
+        <p></p>
+        <ul>
+          <li v-for="(literal, index) in literals" :key="index">
+            {{ literal }}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -57,11 +69,9 @@ export default Vue.extend({
       stringRecords: [new Array(length).fill(0)],
       patternRecords: [new Array(length).fill(0)],
       records: [],
+      literals: ['starting the iteration'],
       step: 0,
-      currentI: 0,
-      currentJ: 0,
       animationInterval: null,
-      disableNext: false,
     }
   },
   props: {
@@ -91,6 +101,7 @@ export default Vue.extend({
 
       this.stringRecords.push(s)
       this.patternRecords.push(p)
+
       this.records.push([iterations, i, j, status])
     })
   },
@@ -124,7 +135,7 @@ export default Vue.extend({
       this.animationInterval = setInterval(() => {
         if (this.canStepMore()) {
           this.step++
-        } else handleStop()
+        } else this.handleStop()
       }, 500)
     },
     handleStop() {

@@ -3,6 +3,7 @@
     <h1 class="is-size-1 has-text-grey-darker">Naive Pattern Searching</h1>
     <h2 class="is-size-2 has-text-grey">Visualized</h2>
     <hr />
+
     <div v-if="!isLocked">
       <InputSelection @lock="handleLock" :string="string" :pattern="pattern" />
       <br />
@@ -34,6 +35,7 @@ export default Vue.extend({
       isLocked: false,
       string: 'abdabcababda',
       pattern: 'aba',
+      mode: 'custom',
     }
   },
   methods: {
