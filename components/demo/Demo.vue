@@ -17,24 +17,12 @@
       :disable-next="!canStepMore()"
     />
     <br />
-    <div class="columns">
-      <div class="column is-6">
-        <DemoTable
-          :labels="['iteration count', 'i', 'j', 'status']"
-          :values="records"
-          :highlighted="step - 1"
-          @select-row="handleSelectRow"
-        />
-      </div>
-      <div class="column is-6">
-        <p></p>
-        <ul>
-          <li v-for="(literal, index) in literals" :key="index">
-            {{ literal }}
-          </li>
-        </ul>
-      </div>
-    </div>
+    <DemoTable
+      :labels="['iteration count', 'i', 'j', 'status']"
+      :values="records"
+      :highlighted="step - 1"
+      @select-row="handleSelectRow"
+    />
   </div>
 </template>
 
@@ -69,7 +57,6 @@ export default Vue.extend({
       stringRecords: [new Array(length).fill(0)],
       patternRecords: [new Array(length).fill(0)],
       records: [],
-      literals: ['starting the iteration'],
       step: 0,
       animationInterval: null,
     }
